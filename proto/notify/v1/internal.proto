@@ -1,11 +1,11 @@
 syntax = "proto3";
 
-package cogate.notify.v1;
+package notify.v1;
 
-option go_package = "github.com/brojyf/cogate-cotab-proto/gen/go/cogate/notify/v1;notifyv1";
+option go_package = "github.com/brojyf/cotab-proto/gen/go/notify/v1;notifyv1";
 
-// NotifyInternal is how other cogate services manage the delivery targets that
-// cogate-notify owns.
+// NotifyInternal is how other services manage the delivery targets that
+// notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token

@@ -1,6 +1,6 @@
-# cogate-cotab-proto
+# cotab-proto
 
-The single source of truth for cogate's internal gRPC contracts.
+The single source of truth for the internal gRPC contracts.
 
 ## Layout
 
@@ -8,7 +8,7 @@ The single source of truth for cogate's internal gRPC contracts.
 - `gen/go/` contains committed Go clients and servers generated from those
   sources.
 - The root Rust crate exposes the same contracts under
-  `cogate_cotab_proto::{cogate,rusti2}`.
+  `cotab_proto::{cotab,notify,rusti2}`.
 
 Services consume a tagged release. They do not copy `.proto` files or generated
 stubs into their own repositories.
@@ -45,11 +45,11 @@ that tag explicitly and upgrade in their own deployment cycle.
 Go:
 
 ```sh
-go get github.com/brojyf/cogate-cotab-proto@v0.1.0
+go get github.com/brojyf/cotab-proto@v0.2.0
 ```
 
 Rust:
 
 ```toml
-cogate-cotab-proto = { git = "https://github.com/brojyf/cogate-cotab-proto", tag = "v0.1.0" }
+cotab-proto = { git = "https://github.com/brojyf/cotab-proto", tag = "v0.2.0" }
 ```

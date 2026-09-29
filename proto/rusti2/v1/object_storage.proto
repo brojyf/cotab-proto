@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package rusti2.v1;
 
-option go_package = "github.com/brojyf/cogate-cotab-proto/gen/go/rusti2/v1;rusti2v1";
+option go_package = "github.com/brojyf/cotab-proto/gen/go/rusti2/v1;rusti2v1";
 
 // ObjectStorage wraps Cloudflare R2 for internal services.
 //

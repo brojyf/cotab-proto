@@ -1,4 +1,4 @@
-module github.com/brojyf/cogate-cotab-proto
+module github.com/brojyf/cotab-proto
 
 go 1.25.0
 
