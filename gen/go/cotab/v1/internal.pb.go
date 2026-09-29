@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: cogate/cotab/v1/internal.proto
+// source: cotab/v1/internal.proto
 
 package cotabv1
 
@@ -54,11 +54,11 @@ func (x AvatarSubjectType) String() string {
 }
 
 func (AvatarSubjectType) Descriptor() protoreflect.EnumDescriptor {
-	return file_cogate_cotab_v1_internal_proto_enumTypes[0].Descriptor()
+	return file_cotab_v1_internal_proto_enumTypes[0].Descriptor()
 }
 
 func (AvatarSubjectType) Type() protoreflect.EnumType {
-	return &file_cogate_cotab_v1_internal_proto_enumTypes[0]
+	return &file_cotab_v1_internal_proto_enumTypes[0]
 }
 
 func (x AvatarSubjectType) Number() protoreflect.EnumNumber {
@@ -67,7 +67,7 @@ func (x AvatarSubjectType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use AvatarSubjectType.Descriptor instead.
 func (AvatarSubjectType) EnumDescriptor() ([]byte, []int) {
-	return file_cogate_cotab_v1_internal_proto_rawDescGZIP(), []int{0}
+	return file_cotab_v1_internal_proto_rawDescGZIP(), []int{0}
 }
 
 type AvatarVerdict int32
@@ -107,11 +107,11 @@ func (x AvatarVerdict) String() string {
 }
 
 func (AvatarVerdict) Descriptor() protoreflect.EnumDescriptor {
-	return file_cogate_cotab_v1_internal_proto_enumTypes[1].Descriptor()
+	return file_cotab_v1_internal_proto_enumTypes[1].Descriptor()
 }
 
 func (AvatarVerdict) Type() protoreflect.EnumType {
-	return &file_cogate_cotab_v1_internal_proto_enumTypes[1]
+	return &file_cotab_v1_internal_proto_enumTypes[1]
 }
 
 func (x AvatarVerdict) Number() protoreflect.EnumNumber {
@@ -120,7 +120,7 @@ func (x AvatarVerdict) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use AvatarVerdict.Descriptor instead.
 func (AvatarVerdict) EnumDescriptor() ([]byte, []int) {
-	return file_cogate_cotab_v1_internal_proto_rawDescGZIP(), []int{1}
+	return file_cotab_v1_internal_proto_rawDescGZIP(), []int{1}
 }
 
 type ApplyAvatarModerationResultRequest struct {
@@ -129,12 +129,12 @@ type ApplyAvatarModerationResultRequest struct {
 	// from. One message produces one verdict no matter how many times it is
 	// delivered or how many times this call is retried.
 	MessageId   string            `protobuf:"bytes,1,opt,name=message_id,json=messageId,proto3" json:"message_id,omitempty"`
-	SubjectType AvatarSubjectType `protobuf:"varint,2,opt,name=subject_type,json=subjectType,proto3,enum=cogate.cotab.v1.AvatarSubjectType" json:"subject_type,omitempty"`
+	SubjectType AvatarSubjectType `protobuf:"varint,2,opt,name=subject_type,json=subjectType,proto3,enum=cotab.v1.AvatarSubjectType" json:"subject_type,omitempty"`
 	SubjectId   string            `protobuf:"bytes,3,opt,name=subject_id,json=subjectId,proto3" json:"subject_id,omitempty"`
 	// Who uploaded the image. Kept on the audit entry so a report has a person
 	// on it; for a user avatar this equals subject_id.
 	UploadedBy string        `protobuf:"bytes,4,opt,name=uploaded_by,json=uploadedBy,proto3" json:"uploaded_by,omitempty"`
-	Verdict    AvatarVerdict `protobuf:"varint,5,opt,name=verdict,proto3,enum=cogate.cotab.v1.AvatarVerdict" json:"verdict,omitempty"`
+	Verdict    AvatarVerdict `protobuf:"varint,5,opt,name=verdict,proto3,enum=cotab.v1.AvatarVerdict" json:"verdict,omitempty"`
 	// Where the approved image was published, required when the verdict is
 	// APPROVED and empty otherwise.
 	//
@@ -159,7 +159,7 @@ type ApplyAvatarModerationResultRequest struct {
 
 func (x *ApplyAvatarModerationResultRequest) Reset() {
 	*x = ApplyAvatarModerationResultRequest{}
-	mi := &file_cogate_cotab_v1_internal_proto_msgTypes[0]
+	mi := &file_cotab_v1_internal_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -171,7 +171,7 @@ func (x *ApplyAvatarModerationResultRequest) String() string {
 func (*ApplyAvatarModerationResultRequest) ProtoMessage() {}
 
 func (x *ApplyAvatarModerationResultRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_cotab_v1_internal_proto_msgTypes[0]
+	mi := &file_cotab_v1_internal_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +184,7 @@ func (x *ApplyAvatarModerationResultRequest) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use ApplyAvatarModerationResultRequest.ProtoReflect.Descriptor instead.
 func (*ApplyAvatarModerationResultRequest) Descriptor() ([]byte, []int) {
-	return file_cogate_cotab_v1_internal_proto_rawDescGZIP(), []int{0}
+	return file_cotab_v1_internal_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *ApplyAvatarModerationResultRequest) GetMessageId() string {
@@ -267,7 +267,7 @@ type ApplyAvatarModerationResultResponse struct {
 	AlreadyApplied bool `protobuf:"varint,2,opt,name=already_applied,json=alreadyApplied,proto3" json:"already_applied,omitempty"`
 	// The verdict actually on record. On a replay this is what the first call
 	// stored, which is what the caller should act on.
-	AppliedVerdict AvatarVerdict `protobuf:"varint,3,opt,name=applied_verdict,json=appliedVerdict,proto3,enum=cogate.cotab.v1.AvatarVerdict" json:"applied_verdict,omitempty"`
+	AppliedVerdict AvatarVerdict `protobuf:"varint,3,opt,name=applied_verdict,json=appliedVerdict,proto3,enum=cotab.v1.AvatarVerdict" json:"applied_verdict,omitempty"`
 	// False when the subject no longer exists — a deleted user, a soft-deleted
 	// group. The call still succeeds, because there is nothing to retry: the
 	// caller should clean up the objects it uploaded and move on.
@@ -278,7 +278,7 @@ type ApplyAvatarModerationResultResponse struct {
 
 func (x *ApplyAvatarModerationResultResponse) Reset() {
 	*x = ApplyAvatarModerationResultResponse{}
-	mi := &file_cogate_cotab_v1_internal_proto_msgTypes[1]
+	mi := &file_cotab_v1_internal_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -290,7 +290,7 @@ func (x *ApplyAvatarModerationResultResponse) String() string {
 func (*ApplyAvatarModerationResultResponse) ProtoMessage() {}
 
 func (x *ApplyAvatarModerationResultResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_cotab_v1_internal_proto_msgTypes[1]
+	mi := &file_cotab_v1_internal_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -303,7 +303,7 @@ func (x *ApplyAvatarModerationResultResponse) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use ApplyAvatarModerationResultResponse.ProtoReflect.Descriptor instead.
 func (*ApplyAvatarModerationResultResponse) Descriptor() ([]byte, []int) {
-	return file_cogate_cotab_v1_internal_proto_rawDescGZIP(), []int{1}
+	return file_cotab_v1_internal_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *ApplyAvatarModerationResultResponse) GetReplacedKey() string {
@@ -334,35 +334,35 @@ func (x *ApplyAvatarModerationResultResponse) GetSubjectExists() bool {
 	return false
 }
 
-var File_cogate_cotab_v1_internal_proto protoreflect.FileDescriptor
+var File_cotab_v1_internal_proto protoreflect.FileDescriptor
 
-const file_cogate_cotab_v1_internal_proto_rawDesc = "" +
+const file_cotab_v1_internal_proto_rawDesc = "" +
 	"\n" +
-	"\x1ecogate/cotab/v1/internal.proto\x12\x0fcogate.cotab.v1\"\x8c\x04\n" +
+	"\x17cotab/v1/internal.proto\x12\bcotab.v1\"\xf7\x03\n" +
 	"\"ApplyAvatarModerationResultRequest\x12\x1d\n" +
 	"\n" +
-	"message_id\x18\x01 \x01(\tR\tmessageId\x12E\n" +
-	"\fsubject_type\x18\x02 \x01(\x0e2\".cogate.cotab.v1.AvatarSubjectTypeR\vsubjectType\x12\x1d\n" +
+	"message_id\x18\x01 \x01(\tR\tmessageId\x12>\n" +
+	"\fsubject_type\x18\x02 \x01(\x0e2\x1b.cotab.v1.AvatarSubjectTypeR\vsubjectType\x12\x1d\n" +
 	"\n" +
 	"subject_id\x18\x03 \x01(\tR\tsubjectId\x12\x1f\n" +
 	"\vuploaded_by\x18\x04 \x01(\tR\n" +
-	"uploadedBy\x128\n" +
-	"\averdict\x18\x05 \x01(\x0e2\x1e.cogate.cotab.v1.AvatarVerdictR\averdict\x12\x1d\n" +
+	"uploadedBy\x121\n" +
+	"\averdict\x18\x05 \x01(\x0e2\x17.cotab.v1.AvatarVerdictR\averdict\x12\x1d\n" +
 	"\n" +
 	"public_key\x18\x06 \x01(\tR\tpublicKey\x12\x1f\n" +
 	"\vpending_key\x18\a \x01(\tR\n" +
 	"pendingKey\x12\x1a\n" +
 	"\bprovider\x18\b \x01(\tR\bprovider\x12\x16\n" +
-	"\x06reason\x18\t \x01(\tR\x06reason\x12W\n" +
+	"\x06reason\x18\t \x01(\tR\x06reason\x12P\n" +
 	"\x06scores\x18\n" +
-	" \x03(\v2?.cogate.cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntryR\x06scores\x1a9\n" +
+	" \x03(\v28.cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntryR\x06scores\x1a9\n" +
 	"\vScoresEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xe1\x01\n" +
+	"\x05value\x18\x02 \x01(\x01R\x05value:\x028\x01\"\xda\x01\n" +
 	"#ApplyAvatarModerationResultResponse\x12!\n" +
 	"\freplaced_key\x18\x01 \x01(\tR\vreplacedKey\x12'\n" +
-	"\x0falready_applied\x18\x02 \x01(\bR\x0ealreadyApplied\x12G\n" +
-	"\x0fapplied_verdict\x18\x03 \x01(\x0e2\x1e.cogate.cotab.v1.AvatarVerdictR\x0eappliedVerdict\x12%\n" +
+	"\x0falready_applied\x18\x02 \x01(\bR\x0ealreadyApplied\x12@\n" +
+	"\x0fapplied_verdict\x18\x03 \x01(\x0e2\x17.cotab.v1.AvatarVerdictR\x0eappliedVerdict\x12%\n" +
 	"\x0esubject_exists\x18\x04 \x01(\bR\rsubjectExists*u\n" +
 	"\x11AvatarSubjectType\x12#\n" +
 	"\x1fAVATAR_SUBJECT_TYPE_UNSPECIFIED\x10\x00\x12\x1c\n" +
@@ -372,38 +372,38 @@ const file_cogate_cotab_v1_internal_proto_rawDesc = "" +
 	"\x1aAVATAR_VERDICT_UNSPECIFIED\x10\x00\x12\x1b\n" +
 	"\x17AVATAR_VERDICT_APPROVED\x10\x01\x12\x1b\n" +
 	"\x17AVATAR_VERDICT_REJECTED\x10\x02\x12\x19\n" +
-	"\x15AVATAR_VERDICT_FAILED\x10\x032\x9a\x01\n" +
-	"\rCotabInternal\x12\x88\x01\n" +
-	"\x1bApplyAvatarModerationResult\x123.cogate.cotab.v1.ApplyAvatarModerationResultRequest\x1a4.cogate.cotab.v1.ApplyAvatarModerationResultResponseBEZCgithub.com/brojyf/cogate-cotab-proto/gen/go/cogate/cotab/v1;cotabv1b\x06proto3"
+	"\x15AVATAR_VERDICT_FAILED\x10\x032\x8b\x01\n" +
+	"\rCotabInternal\x12z\n" +
+	"\x1bApplyAvatarModerationResult\x12,.cotab.v1.ApplyAvatarModerationResultRequest\x1a-.cotab.v1.ApplyAvatarModerationResultResponseB7Z5github.com/brojyf/cotab-proto/gen/go/cotab/v1;cotabv1b\x06proto3"
 
 var (
-	file_cogate_cotab_v1_internal_proto_rawDescOnce sync.Once
-	file_cogate_cotab_v1_internal_proto_rawDescData []byte
+	file_cotab_v1_internal_proto_rawDescOnce sync.Once
+	file_cotab_v1_internal_proto_rawDescData []byte
 )
 
-func file_cogate_cotab_v1_internal_proto_rawDescGZIP() []byte {
-	file_cogate_cotab_v1_internal_proto_rawDescOnce.Do(func() {
-		file_cogate_cotab_v1_internal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cogate_cotab_v1_internal_proto_rawDesc), len(file_cogate_cotab_v1_internal_proto_rawDesc)))
+func file_cotab_v1_internal_proto_rawDescGZIP() []byte {
+	file_cotab_v1_internal_proto_rawDescOnce.Do(func() {
+		file_cotab_v1_internal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cotab_v1_internal_proto_rawDesc), len(file_cotab_v1_internal_proto_rawDesc)))
 	})
-	return file_cogate_cotab_v1_internal_proto_rawDescData
+	return file_cotab_v1_internal_proto_rawDescData
 }
 
-var file_cogate_cotab_v1_internal_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_cogate_cotab_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
-var file_cogate_cotab_v1_internal_proto_goTypes = []any{
-	(AvatarSubjectType)(0),                      // 0: cogate.cotab.v1.AvatarSubjectType
-	(AvatarVerdict)(0),                          // 1: cogate.cotab.v1.AvatarVerdict
-	(*ApplyAvatarModerationResultRequest)(nil),  // 2: cogate.cotab.v1.ApplyAvatarModerationResultRequest
-	(*ApplyAvatarModerationResultResponse)(nil), // 3: cogate.cotab.v1.ApplyAvatarModerationResultResponse
-	nil, // 4: cogate.cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntry
+var file_cotab_v1_internal_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
+var file_cotab_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
+var file_cotab_v1_internal_proto_goTypes = []any{
+	(AvatarSubjectType)(0),                      // 0: cotab.v1.AvatarSubjectType
+	(AvatarVerdict)(0),                          // 1: cotab.v1.AvatarVerdict
+	(*ApplyAvatarModerationResultRequest)(nil),  // 2: cotab.v1.ApplyAvatarModerationResultRequest
+	(*ApplyAvatarModerationResultResponse)(nil), // 3: cotab.v1.ApplyAvatarModerationResultResponse
+	nil, // 4: cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntry
 }
-var file_cogate_cotab_v1_internal_proto_depIdxs = []int32{
-	0, // 0: cogate.cotab.v1.ApplyAvatarModerationResultRequest.subject_type:type_name -> cogate.cotab.v1.AvatarSubjectType
-	1, // 1: cogate.cotab.v1.ApplyAvatarModerationResultRequest.verdict:type_name -> cogate.cotab.v1.AvatarVerdict
-	4, // 2: cogate.cotab.v1.ApplyAvatarModerationResultRequest.scores:type_name -> cogate.cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntry
-	1, // 3: cogate.cotab.v1.ApplyAvatarModerationResultResponse.applied_verdict:type_name -> cogate.cotab.v1.AvatarVerdict
-	2, // 4: cogate.cotab.v1.CotabInternal.ApplyAvatarModerationResult:input_type -> cogate.cotab.v1.ApplyAvatarModerationResultRequest
-	3, // 5: cogate.cotab.v1.CotabInternal.ApplyAvatarModerationResult:output_type -> cogate.cotab.v1.ApplyAvatarModerationResultResponse
+var file_cotab_v1_internal_proto_depIdxs = []int32{
+	0, // 0: cotab.v1.ApplyAvatarModerationResultRequest.subject_type:type_name -> cotab.v1.AvatarSubjectType
+	1, // 1: cotab.v1.ApplyAvatarModerationResultRequest.verdict:type_name -> cotab.v1.AvatarVerdict
+	4, // 2: cotab.v1.ApplyAvatarModerationResultRequest.scores:type_name -> cotab.v1.ApplyAvatarModerationResultRequest.ScoresEntry
+	1, // 3: cotab.v1.ApplyAvatarModerationResultResponse.applied_verdict:type_name -> cotab.v1.AvatarVerdict
+	2, // 4: cotab.v1.CotabInternal.ApplyAvatarModerationResult:input_type -> cotab.v1.ApplyAvatarModerationResultRequest
+	3, // 5: cotab.v1.CotabInternal.ApplyAvatarModerationResult:output_type -> cotab.v1.ApplyAvatarModerationResultResponse
 	5, // [5:6] is the sub-list for method output_type
 	4, // [4:5] is the sub-list for method input_type
 	4, // [4:4] is the sub-list for extension type_name
@@ -411,27 +411,27 @@ var file_cogate_cotab_v1_internal_proto_depIdxs = []int32{
 	0, // [0:4] is the sub-list for field type_name
 }
 
-func init() { file_cogate_cotab_v1_internal_proto_init() }
-func file_cogate_cotab_v1_internal_proto_init() {
-	if File_cogate_cotab_v1_internal_proto != nil {
+func init() { file_cotab_v1_internal_proto_init() }
+func file_cotab_v1_internal_proto_init() {
+	if File_cotab_v1_internal_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cogate_cotab_v1_internal_proto_rawDesc), len(file_cogate_cotab_v1_internal_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cotab_v1_internal_proto_rawDesc), len(file_cotab_v1_internal_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_cogate_cotab_v1_internal_proto_goTypes,
-		DependencyIndexes: file_cogate_cotab_v1_internal_proto_depIdxs,
-		EnumInfos:         file_cogate_cotab_v1_internal_proto_enumTypes,
-		MessageInfos:      file_cogate_cotab_v1_internal_proto_msgTypes,
+		GoTypes:           file_cotab_v1_internal_proto_goTypes,
+		DependencyIndexes: file_cotab_v1_internal_proto_depIdxs,
+		EnumInfos:         file_cotab_v1_internal_proto_enumTypes,
+		MessageInfos:      file_cotab_v1_internal_proto_msgTypes,
 	}.Build()
-	File_cogate_cotab_v1_internal_proto = out.File
-	file_cogate_cotab_v1_internal_proto_goTypes = nil
-	file_cogate_cotab_v1_internal_proto_depIdxs = nil
+	File_cotab_v1_internal_proto = out.File
+	file_cotab_v1_internal_proto_goTypes = nil
+	file_cotab_v1_internal_proto_depIdxs = nil
 }

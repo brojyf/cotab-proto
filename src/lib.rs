@@ -1,16 +1,14 @@
-//! Versioned gRPC contracts shared by cogate services.
+//! Versioned gRPC contracts shared by the platform services.
 
-pub mod cogate {
-    pub mod cotab {
-        pub mod v1 {
-            tonic::include_proto!("cogate.cotab.v1");
-        }
+pub mod cotab {
+    pub mod v1 {
+        tonic::include_proto!("cotab.v1");
     }
+}
 
-    pub mod notify {
-        pub mod v1 {
-            tonic::include_proto!("cogate.notify.v1");
-        }
+pub mod notify {
+    pub mod v1 {
+        tonic::include_proto!("notify.v1");
     }
 }
 

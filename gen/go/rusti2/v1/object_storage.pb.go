@@ -699,7 +699,7 @@ const file_rusti2_v1_object_storage_proto_rawDesc = "" +
 	"StatObject\x12\x1c.rusti2.v1.StatObjectRequest\x1a\x1d.rusti2.v1.StatObjectResponse\x12T\n" +
 	"\x0eDownloadObject\x12 .rusti2.v1.DownloadObjectRequest\x1a\x1e.rusti2.v1.DownloadObjectChunk0\x01\x12Q\n" +
 	"\fUploadObject\x12\x1e.rusti2.v1.UploadObjectRequest\x1a\x1f.rusti2.v1.UploadObjectResponse(\x01\x12O\n" +
-	"\fDeleteObject\x12\x1e.rusti2.v1.DeleteObjectRequest\x1a\x1f.rusti2.v1.DeleteObjectResponseB@Z>github.com/brojyf/cogate-cotab-proto/gen/go/rusti2/v1;rusti2v1b\x06proto3"
+	"\fDeleteObject\x12\x1e.rusti2.v1.DeleteObjectRequest\x1a\x1f.rusti2.v1.DeleteObjectResponseB9Z7github.com/brojyf/cotab-proto/gen/go/rusti2/v1;rusti2v1b\x06proto3"
 
 var (
 	file_rusti2_v1_object_storage_proto_rawDescOnce sync.Once

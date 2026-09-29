@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: cogate/cotab/v1/internal.proto
+// source: cotab/v1/internal.proto
 
 package cotabv1
 
@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CotabInternal_ApplyAvatarModerationResult_FullMethodName = "/cogate.cotab.v1.CotabInternal/ApplyAvatarModerationResult"
+	CotabInternal_ApplyAvatarModerationResult_FullMethodName = "/cotab.v1.CotabInternal/ApplyAvatarModerationResult"
 )
 
 // CotabInternalClient is the client API for CotabInternal service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// CotabInternal is how other cogate services change data that cogate-cotab-api
+// CotabInternal is how other services change data that cotab-api
 // owns. Nothing else writes the Cotab database: a service that needs a row
 // changed asks for it here, so the rules around that row live in one codebase
 // and a schema change is not a synchronized deploy across three repositories.
@@ -67,7 +67,7 @@ func (c *cotabInternalClient) ApplyAvatarModerationResult(ctx context.Context, i
 // All implementations must embed UnimplementedCotabInternalServer
 // for forward compatibility.
 //
-// CotabInternal is how other cogate services change data that cogate-cotab-api
+// CotabInternal is how other services change data that cotab-api
 // owns. Nothing else writes the Cotab database: a service that needs a row
 // changed asks for it here, so the rules around that row live in one codebase
 // and a schema change is not a synchronized deploy across three repositories.
@@ -140,7 +140,7 @@ func _CotabInternal_ApplyAvatarModerationResult_Handler(srv interface{}, ctx con
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CotabInternal_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "cogate.cotab.v1.CotabInternal",
+	ServiceName: "cotab.v1.CotabInternal",
 	HandlerType: (*CotabInternalServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -149,5 +149,5 @@ var CotabInternal_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "cogate/cotab/v1/internal.proto",
+	Metadata: "cotab/v1/internal.proto",
 }

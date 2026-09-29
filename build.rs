@@ -1,7 +1,7 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let protos = [
-        "proto/cogate/cotab/v1/internal.proto",
-        "proto/cogate/notify/v1/internal.proto",
+        "proto/cotab/v1/internal.proto",
+        "proto/notify/v1/internal.proto",
         "proto/rusti2/v1/object_storage.proto",
     ];
 

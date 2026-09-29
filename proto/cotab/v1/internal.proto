@@ -1,10 +1,10 @@
 syntax = "proto3";
 
-package cogate.cotab.v1;
+package cotab.v1;
 
-option go_package = "github.com/brojyf/cogate-cotab-proto/gen/go/cogate/cotab/v1;cotabv1";
+option go_package = "github.com/brojyf/cotab-proto/gen/go/cotab/v1;cotabv1";
 
-// CotabInternal is how other cogate services change data that cogate-cotab-api
+// CotabInternal is how other services change data that cotab-api
 // owns. Nothing else writes the Cotab database: a service that needs a row
 // changed asks for it here, so the rules around that row live in one codebase
 // and a schema change is not a synchronized deploy across three repositories.

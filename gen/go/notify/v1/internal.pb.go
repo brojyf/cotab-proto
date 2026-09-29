@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        (unknown)
-// source: cogate/notify/v1/internal.proto
+// source: notify/v1/internal.proto
 
 package notifyv1
 
@@ -28,7 +28,7 @@ type RegisterDeviceRequest struct {
 	Token string `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
 	// Retained only for v1 wire compatibility. Servers ignore this field.
 	//
-	// Deprecated: Marked as deprecated in cogate/notify/v1/internal.proto.
+	// Deprecated: Marked as deprecated in notify/v1/internal.proto.
 	Sandbox       bool `protobuf:"varint,3,opt,name=sandbox,proto3" json:"sandbox,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -36,7 +36,7 @@ type RegisterDeviceRequest struct {
 
 func (x *RegisterDeviceRequest) Reset() {
 	*x = RegisterDeviceRequest{}
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[0]
+	mi := &file_notify_v1_internal_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -48,7 +48,7 @@ func (x *RegisterDeviceRequest) String() string {
 func (*RegisterDeviceRequest) ProtoMessage() {}
 
 func (x *RegisterDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[0]
+	mi := &file_notify_v1_internal_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -61,7 +61,7 @@ func (x *RegisterDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterDeviceRequest.ProtoReflect.Descriptor instead.
 func (*RegisterDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_cogate_notify_v1_internal_proto_rawDescGZIP(), []int{0}
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *RegisterDeviceRequest) GetUserId() string {
@@ -78,7 +78,7 @@ func (x *RegisterDeviceRequest) GetToken() string {
 	return ""
 }
 
-// Deprecated: Marked as deprecated in cogate/notify/v1/internal.proto.
+// Deprecated: Marked as deprecated in notify/v1/internal.proto.
 func (x *RegisterDeviceRequest) GetSandbox() bool {
 	if x != nil {
 		return x.Sandbox
@@ -94,7 +94,7 @@ type RegisterDeviceResponse struct {
 
 func (x *RegisterDeviceResponse) Reset() {
 	*x = RegisterDeviceResponse{}
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[1]
+	mi := &file_notify_v1_internal_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -106,7 +106,7 @@ func (x *RegisterDeviceResponse) String() string {
 func (*RegisterDeviceResponse) ProtoMessage() {}
 
 func (x *RegisterDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[1]
+	mi := &file_notify_v1_internal_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -119,7 +119,7 @@ func (x *RegisterDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RegisterDeviceResponse.ProtoReflect.Descriptor instead.
 func (*RegisterDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_cogate_notify_v1_internal_proto_rawDescGZIP(), []int{1}
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{1}
 }
 
 type UnregisterDeviceRequest struct {
@@ -134,7 +134,7 @@ type UnregisterDeviceRequest struct {
 
 func (x *UnregisterDeviceRequest) Reset() {
 	*x = UnregisterDeviceRequest{}
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[2]
+	mi := &file_notify_v1_internal_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -146,7 +146,7 @@ func (x *UnregisterDeviceRequest) String() string {
 func (*UnregisterDeviceRequest) ProtoMessage() {}
 
 func (x *UnregisterDeviceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[2]
+	mi := &file_notify_v1_internal_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -159,7 +159,7 @@ func (x *UnregisterDeviceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterDeviceRequest.ProtoReflect.Descriptor instead.
 func (*UnregisterDeviceRequest) Descriptor() ([]byte, []int) {
-	return file_cogate_notify_v1_internal_proto_rawDescGZIP(), []int{2}
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *UnregisterDeviceRequest) GetUserId() string {
@@ -184,7 +184,7 @@ type UnregisterDeviceResponse struct {
 
 func (x *UnregisterDeviceResponse) Reset() {
 	*x = UnregisterDeviceResponse{}
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[3]
+	mi := &file_notify_v1_internal_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -196,7 +196,7 @@ func (x *UnregisterDeviceResponse) String() string {
 func (*UnregisterDeviceResponse) ProtoMessage() {}
 
 func (x *UnregisterDeviceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_cogate_notify_v1_internal_proto_msgTypes[3]
+	mi := &file_notify_v1_internal_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -209,14 +209,14 @@ func (x *UnregisterDeviceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UnregisterDeviceResponse.ProtoReflect.Descriptor instead.
 func (*UnregisterDeviceResponse) Descriptor() ([]byte, []int) {
-	return file_cogate_notify_v1_internal_proto_rawDescGZIP(), []int{3}
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{3}
 }
 
-var File_cogate_notify_v1_internal_proto protoreflect.FileDescriptor
+var File_notify_v1_internal_proto protoreflect.FileDescriptor
 
-const file_cogate_notify_v1_internal_proto_rawDesc = "" +
+const file_notify_v1_internal_proto_rawDesc = "" +
 	"\n" +
-	"\x1fcogate/notify/v1/internal.proto\x12\x10cogate.notify.v1\"d\n" +
+	"\x18notify/v1/internal.proto\x12\tnotify.v1\"d\n" +
 	"\x15RegisterDeviceRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\x12\x1c\n" +
@@ -225,35 +225,35 @@ const file_cogate_notify_v1_internal_proto_rawDesc = "" +
 	"\x17UnregisterDeviceRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\"\x1a\n" +
-	"\x18UnregisterDeviceResponse2\xe0\x01\n" +
-	"\x0eNotifyInternal\x12c\n" +
-	"\x0eRegisterDevice\x12'.cogate.notify.v1.RegisterDeviceRequest\x1a(.cogate.notify.v1.RegisterDeviceResponse\x12i\n" +
-	"\x10UnregisterDevice\x12).cogate.notify.v1.UnregisterDeviceRequest\x1a*.cogate.notify.v1.UnregisterDeviceResponseBGZEgithub.com/brojyf/cogate-cotab-proto/gen/go/cogate/notify/v1;notifyv1b\x06proto3"
+	"\x18UnregisterDeviceResponse2\xc4\x01\n" +
+	"\x0eNotifyInternal\x12U\n" +
+	"\x0eRegisterDevice\x12 .notify.v1.RegisterDeviceRequest\x1a!.notify.v1.RegisterDeviceResponse\x12[\n" +
+	"\x10UnregisterDevice\x12\".notify.v1.UnregisterDeviceRequest\x1a#.notify.v1.UnregisterDeviceResponseB9Z7github.com/brojyf/cotab-proto/gen/go/notify/v1;notifyv1b\x06proto3"
 
 var (
-	file_cogate_notify_v1_internal_proto_rawDescOnce sync.Once
-	file_cogate_notify_v1_internal_proto_rawDescData []byte
+	file_notify_v1_internal_proto_rawDescOnce sync.Once
+	file_notify_v1_internal_proto_rawDescData []byte
 )
 
-func file_cogate_notify_v1_internal_proto_rawDescGZIP() []byte {
-	file_cogate_notify_v1_internal_proto_rawDescOnce.Do(func() {
-		file_cogate_notify_v1_internal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_cogate_notify_v1_internal_proto_rawDesc), len(file_cogate_notify_v1_internal_proto_rawDesc)))
+func file_notify_v1_internal_proto_rawDescGZIP() []byte {
+	file_notify_v1_internal_proto_rawDescOnce.Do(func() {
+		file_notify_v1_internal_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_notify_v1_internal_proto_rawDesc), len(file_notify_v1_internal_proto_rawDesc)))
 	})
-	return file_cogate_notify_v1_internal_proto_rawDescData
+	return file_notify_v1_internal_proto_rawDescData
 }
 
-var file_cogate_notify_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_cogate_notify_v1_internal_proto_goTypes = []any{
-	(*RegisterDeviceRequest)(nil),    // 0: cogate.notify.v1.RegisterDeviceRequest
-	(*RegisterDeviceResponse)(nil),   // 1: cogate.notify.v1.RegisterDeviceResponse
-	(*UnregisterDeviceRequest)(nil),  // 2: cogate.notify.v1.UnregisterDeviceRequest
-	(*UnregisterDeviceResponse)(nil), // 3: cogate.notify.v1.UnregisterDeviceResponse
+var file_notify_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_notify_v1_internal_proto_goTypes = []any{
+	(*RegisterDeviceRequest)(nil),    // 0: notify.v1.RegisterDeviceRequest
+	(*RegisterDeviceResponse)(nil),   // 1: notify.v1.RegisterDeviceResponse
+	(*UnregisterDeviceRequest)(nil),  // 2: notify.v1.UnregisterDeviceRequest
+	(*UnregisterDeviceResponse)(nil), // 3: notify.v1.UnregisterDeviceResponse
 }
-var file_cogate_notify_v1_internal_proto_depIdxs = []int32{
-	0, // 0: cogate.notify.v1.NotifyInternal.RegisterDevice:input_type -> cogate.notify.v1.RegisterDeviceRequest
-	2, // 1: cogate.notify.v1.NotifyInternal.UnregisterDevice:input_type -> cogate.notify.v1.UnregisterDeviceRequest
-	1, // 2: cogate.notify.v1.NotifyInternal.RegisterDevice:output_type -> cogate.notify.v1.RegisterDeviceResponse
-	3, // 3: cogate.notify.v1.NotifyInternal.UnregisterDevice:output_type -> cogate.notify.v1.UnregisterDeviceResponse
+var file_notify_v1_internal_proto_depIdxs = []int32{
+	0, // 0: notify.v1.NotifyInternal.RegisterDevice:input_type -> notify.v1.RegisterDeviceRequest
+	2, // 1: notify.v1.NotifyInternal.UnregisterDevice:input_type -> notify.v1.UnregisterDeviceRequest
+	1, // 2: notify.v1.NotifyInternal.RegisterDevice:output_type -> notify.v1.RegisterDeviceResponse
+	3, // 3: notify.v1.NotifyInternal.UnregisterDevice:output_type -> notify.v1.UnregisterDeviceResponse
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -261,26 +261,26 @@ var file_cogate_notify_v1_internal_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_cogate_notify_v1_internal_proto_init() }
-func file_cogate_notify_v1_internal_proto_init() {
-	if File_cogate_notify_v1_internal_proto != nil {
+func init() { file_notify_v1_internal_proto_init() }
+func file_notify_v1_internal_proto_init() {
+	if File_notify_v1_internal_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_cogate_notify_v1_internal_proto_rawDesc), len(file_cogate_notify_v1_internal_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_notify_v1_internal_proto_rawDesc), len(file_notify_v1_internal_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_cogate_notify_v1_internal_proto_goTypes,
-		DependencyIndexes: file_cogate_notify_v1_internal_proto_depIdxs,
-		MessageInfos:      file_cogate_notify_v1_internal_proto_msgTypes,
+		GoTypes:           file_notify_v1_internal_proto_goTypes,
+		DependencyIndexes: file_notify_v1_internal_proto_depIdxs,
+		MessageInfos:      file_notify_v1_internal_proto_msgTypes,
 	}.Build()
-	File_cogate_notify_v1_internal_proto = out.File
-	file_cogate_notify_v1_internal_proto_goTypes = nil
-	file_cogate_notify_v1_internal_proto_depIdxs = nil
+	File_notify_v1_internal_proto = out.File
+	file_notify_v1_internal_proto_goTypes = nil
+	file_notify_v1_internal_proto_depIdxs = nil
 }

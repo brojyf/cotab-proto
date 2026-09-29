@@ -1,10 +1,10 @@
 [package]
-name = "cogate-cotab-proto"
-version = "0.1.0"
+name = "cotab-proto"
+version = "0.2.0"
 edition = "2021"
-description = "Versioned protobuf contracts for the cogate platform"
+description = "Versioned protobuf contracts for the platform"
 license = "MIT"
-repository = "https://github.com/brojyf/cogate-cotab-proto"
+repository = "https://github.com/brojyf/cotab-proto"
 
 [dependencies]
 prost = "0.13"

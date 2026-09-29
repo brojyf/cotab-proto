@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.6.2
 // - protoc             (unknown)
-// source: cogate/notify/v1/internal.proto
+// source: notify/v1/internal.proto
 
 package notifyv1
 
@@ -19,16 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	NotifyInternal_RegisterDevice_FullMethodName   = "/cogate.notify.v1.NotifyInternal/RegisterDevice"
-	NotifyInternal_UnregisterDevice_FullMethodName = "/cogate.notify.v1.NotifyInternal/UnregisterDevice"
+	NotifyInternal_RegisterDevice_FullMethodName   = "/notify.v1.NotifyInternal/RegisterDevice"
+	NotifyInternal_UnregisterDevice_FullMethodName = "/notify.v1.NotifyInternal/UnregisterDevice"
 )
 
 // NotifyInternalClient is the client API for NotifyInternal service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// NotifyInternal is how other cogate services manage the delivery targets that
-// cogate-notify owns.
+// NotifyInternal is how other services manage the delivery targets that
+// notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token
@@ -78,8 +78,8 @@ func (c *notifyInternalClient) UnregisterDevice(ctx context.Context, in *Unregis
 // All implementations must embed UnimplementedNotifyInternalServer
 // for forward compatibility.
 //
-// NotifyInternal is how other cogate services manage the delivery targets that
-// cogate-notify owns.
+// NotifyInternal is how other services manage the delivery targets that
+// notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token
@@ -172,7 +172,7 @@ func _NotifyInternal_UnregisterDevice_Handler(srv interface{}, ctx context.Conte
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var NotifyInternal_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "cogate.notify.v1.NotifyInternal",
+	ServiceName: "notify.v1.NotifyInternal",
 	HandlerType: (*NotifyInternalServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -185,5 +185,5 @@ var NotifyInternal_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "cogate/notify/v1/internal.proto",
+	Metadata: "notify/v1/internal.proto",
 }
