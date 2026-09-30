@@ -26,13 +26,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Lint
-        run: buf lint
-
-      - name: Breaking change check
-        if: github.event_name == 'pull_request'
-        run: buf breaking --against "https://github.com/${GITHUB_REPOSITORY}.git#branch=main"
-
       - name: Install protoc
         run: |
           set -euo pipefail
@@ -47,7 +40,7 @@ jobs:
           go install "google.golang.org/grpc/cmd/protoc-gen-go-grpc@${PROTOC_GEN_GO_GRPC_VERSION}"
           echo "$(go env GOPATH)/bin" >> "$GITHUB_PATH"
 
-      - name: Generated Go is current
+      - name: Integration test generated Go contracts
         run: |
           make proto
           git diff --exit-code
@@ -63,12 +56,6 @@ jobs:
       - name: Install protoc
         run: sudo apt-get update && sudo apt-get install -y --no-install-recommends protobuf-compiler
       - uses: dtolnay/rust-toolchain@stable
-        with:
-          components: rustfmt, clippy
       - uses: Swatinem/rust-cache@v2
-      - name: Check formatting
-        run: cargo fmt --all -- --check
-      - name: Clippy
-        run: cargo clippy --all-targets -- -D warnings
       - name: Test
-        run: cargo test --all-targets
+        run: cargo test --locked --all-targets

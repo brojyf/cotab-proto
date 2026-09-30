@@ -17,3 +17,20 @@ pub mod rusti2 {
         tonic::include_proto!("rusti2.v1");
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::rusti2::v1::StatObjectRequest;
+    use prost::Message;
+
+    #[test]
+    fn stat_object_wire_contract_matches_go() {
+        let request = StatObjectRequest {
+            bucket: "media".into(),
+            key: "avatar".into(),
+        };
+        let wire = b"\x0a\x05media\x12\x06avatar";
+        assert_eq!(request.encode_to_vec(), wire);
+        assert_eq!(StatObjectRequest::decode(wire.as_slice()).unwrap(), request);
+    }
+}
