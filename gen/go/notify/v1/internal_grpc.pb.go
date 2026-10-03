@@ -19,16 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	NotifyInternal_RegisterDevice_FullMethodName   = "/notify.v1.NotifyInternal/RegisterDevice"
-	NotifyInternal_UnregisterDevice_FullMethodName = "/notify.v1.NotifyInternal/UnregisterDevice"
+	NotifyInternal_RegisterDevice_FullMethodName      = "/notify.v1.NotifyInternal/RegisterDevice"
+	NotifyInternal_UnregisterDevice_FullMethodName    = "/notify.v1.NotifyInternal/UnregisterDevice"
+	NotifyInternal_EnqueueNotification_FullMethodName = "/notify.v1.NotifyInternal/EnqueueNotification"
 )
 
 // NotifyInternalClient is the client API for NotifyInternal service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
-// NotifyInternal is how other services manage the delivery targets that
-// notify owns.
+// NotifyInternal is how other services hand notify something to deliver, and
+// how they manage the delivery targets that notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token
@@ -44,6 +45,11 @@ type NotifyInternalClient interface {
 	// Releases a device the caller's user owns. Idempotent: unregistering a
 	// device that is not there succeeds.
 	UnregisterDevice(ctx context.Context, in *UnregisterDeviceRequest, opts ...grpc.CallOption) (*UnregisterDeviceResponse, error)
+	// Accepts a push for each of user_ids and returns once it is queued, not
+	// once it is delivered: notify owns the queue behind this call, so callers
+	// never hold its credentials or its message format. Idempotent per
+	// (event_id, user_id): a retry with the same event_id reaches nobody twice.
+	EnqueueNotification(ctx context.Context, in *EnqueueNotificationRequest, opts ...grpc.CallOption) (*EnqueueNotificationResponse, error)
 }
 
 type notifyInternalClient struct {
@@ -74,12 +80,22 @@ func (c *notifyInternalClient) UnregisterDevice(ctx context.Context, in *Unregis
 	return out, nil
 }
 
+func (c *notifyInternalClient) EnqueueNotification(ctx context.Context, in *EnqueueNotificationRequest, opts ...grpc.CallOption) (*EnqueueNotificationResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(EnqueueNotificationResponse)
+	err := c.cc.Invoke(ctx, NotifyInternal_EnqueueNotification_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // NotifyInternalServer is the server API for NotifyInternal service.
 // All implementations must embed UnimplementedNotifyInternalServer
 // for forward compatibility.
 //
-// NotifyInternal is how other services manage the delivery targets that
-// notify owns.
+// NotifyInternal is how other services hand notify something to deliver, and
+// how they manage the delivery targets that notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token
@@ -95,6 +111,11 @@ type NotifyInternalServer interface {
 	// Releases a device the caller's user owns. Idempotent: unregistering a
 	// device that is not there succeeds.
 	UnregisterDevice(context.Context, *UnregisterDeviceRequest) (*UnregisterDeviceResponse, error)
+	// Accepts a push for each of user_ids and returns once it is queued, not
+	// once it is delivered: notify owns the queue behind this call, so callers
+	// never hold its credentials or its message format. Idempotent per
+	// (event_id, user_id): a retry with the same event_id reaches nobody twice.
+	EnqueueNotification(context.Context, *EnqueueNotificationRequest) (*EnqueueNotificationResponse, error)
 	mustEmbedUnimplementedNotifyInternalServer()
 }
 
@@ -110,6 +131,9 @@ func (UnimplementedNotifyInternalServer) RegisterDevice(context.Context, *Regist
 }
 func (UnimplementedNotifyInternalServer) UnregisterDevice(context.Context, *UnregisterDeviceRequest) (*UnregisterDeviceResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method UnregisterDevice not implemented")
+}
+func (UnimplementedNotifyInternalServer) EnqueueNotification(context.Context, *EnqueueNotificationRequest) (*EnqueueNotificationResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method EnqueueNotification not implemented")
 }
 func (UnimplementedNotifyInternalServer) mustEmbedUnimplementedNotifyInternalServer() {}
 func (UnimplementedNotifyInternalServer) testEmbeddedByValue()                        {}
@@ -168,6 +192,24 @@ func _NotifyInternal_UnregisterDevice_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _NotifyInternal_EnqueueNotification_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EnqueueNotificationRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotifyInternalServer).EnqueueNotification(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: NotifyInternal_EnqueueNotification_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotifyInternalServer).EnqueueNotification(ctx, req.(*EnqueueNotificationRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // NotifyInternal_ServiceDesc is the grpc.ServiceDesc for NotifyInternal service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -182,6 +224,10 @@ var NotifyInternal_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UnregisterDevice",
 			Handler:    _NotifyInternal_UnregisterDevice_Handler,
+		},
+		{
+			MethodName: "EnqueueNotification",
+			Handler:    _NotifyInternal_EnqueueNotification_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -212,6 +212,178 @@ func (*UnregisterDeviceResponse) Descriptor() ([]byte, []int) {
 	return file_notify_v1_internal_proto_rawDescGZIP(), []int{3}
 }
 
+type EnqueueNotificationRequest struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Chosen once by the caller when the event happens and reused on every
+	// retry. A fresh id per attempt defeats deduplication.
+	EventId string `protobuf:"bytes,1,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
+	// Who to reach. Resolving a user to devices is notify's job.
+	UserIds       []string          `protobuf:"bytes,2,rep,name=user_ids,json=userIds,proto3" json:"user_ids,omitempty"`
+	Push          *PushNotification `protobuf:"bytes,3,opt,name=push,proto3" json:"push,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnqueueNotificationRequest) Reset() {
+	*x = EnqueueNotificationRequest{}
+	mi := &file_notify_v1_internal_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnqueueNotificationRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnqueueNotificationRequest) ProtoMessage() {}
+
+func (x *EnqueueNotificationRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_notify_v1_internal_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnqueueNotificationRequest.ProtoReflect.Descriptor instead.
+func (*EnqueueNotificationRequest) Descriptor() ([]byte, []int) {
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *EnqueueNotificationRequest) GetEventId() string {
+	if x != nil {
+		return x.EventId
+	}
+	return ""
+}
+
+func (x *EnqueueNotificationRequest) GetUserIds() []string {
+	if x != nil {
+		return x.UserIds
+	}
+	return nil
+}
+
+func (x *EnqueueNotificationRequest) GetPush() *PushNotification {
+	if x != nil {
+		return x.Push
+	}
+	return nil
+}
+
+type PushNotification struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// With a title or body the push is shown as an alert. With neither it is a
+	// silent background push, and the app decides what to show from data.
+	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Body  string `protobuf:"bytes,2,opt,name=body,proto3" json:"body,omitempty"`
+	// Merged into the provider payload for the app to route on.
+	Data map[string]string `protobuf:"bytes,3,rep,name=data,proto3" json:"data,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	// Lets the provider replace an undelivered earlier push with this one.
+	// Stable per logical update, not per attempt. APNs keeps the first 64 bytes.
+	CollapseId    string `protobuf:"bytes,4,opt,name=collapse_id,json=collapseId,proto3" json:"collapse_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PushNotification) Reset() {
+	*x = PushNotification{}
+	mi := &file_notify_v1_internal_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PushNotification) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PushNotification) ProtoMessage() {}
+
+func (x *PushNotification) ProtoReflect() protoreflect.Message {
+	mi := &file_notify_v1_internal_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PushNotification.ProtoReflect.Descriptor instead.
+func (*PushNotification) Descriptor() ([]byte, []int) {
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *PushNotification) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *PushNotification) GetBody() string {
+	if x != nil {
+		return x.Body
+	}
+	return ""
+}
+
+func (x *PushNotification) GetData() map[string]string {
+	if x != nil {
+		return x.Data
+	}
+	return nil
+}
+
+func (x *PushNotification) GetCollapseId() string {
+	if x != nil {
+		return x.CollapseId
+	}
+	return ""
+}
+
+type EnqueueNotificationResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *EnqueueNotificationResponse) Reset() {
+	*x = EnqueueNotificationResponse{}
+	mi := &file_notify_v1_internal_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EnqueueNotificationResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EnqueueNotificationResponse) ProtoMessage() {}
+
+func (x *EnqueueNotificationResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_notify_v1_internal_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EnqueueNotificationResponse.ProtoReflect.Descriptor instead.
+func (*EnqueueNotificationResponse) Descriptor() ([]byte, []int) {
+	return file_notify_v1_internal_proto_rawDescGZIP(), []int{6}
+}
+
 var File_notify_v1_internal_proto protoreflect.FileDescriptor
 
 const file_notify_v1_internal_proto_rawDesc = "" +
@@ -225,10 +397,25 @@ const file_notify_v1_internal_proto_rawDesc = "" +
 	"\x17UnregisterDeviceRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05token\x18\x02 \x01(\tR\x05token\"\x1a\n" +
-	"\x18UnregisterDeviceResponse2\xc4\x01\n" +
+	"\x18UnregisterDeviceResponse\"\x83\x01\n" +
+	"\x1aEnqueueNotificationRequest\x12\x19\n" +
+	"\bevent_id\x18\x01 \x01(\tR\aeventId\x12\x19\n" +
+	"\buser_ids\x18\x02 \x03(\tR\auserIds\x12/\n" +
+	"\x04push\x18\x03 \x01(\v2\x1b.notify.v1.PushNotificationR\x04push\"\xd1\x01\n" +
+	"\x10PushNotification\x12\x14\n" +
+	"\x05title\x18\x01 \x01(\tR\x05title\x12\x12\n" +
+	"\x04body\x18\x02 \x01(\tR\x04body\x129\n" +
+	"\x04data\x18\x03 \x03(\v2%.notify.v1.PushNotification.DataEntryR\x04data\x12\x1f\n" +
+	"\vcollapse_id\x18\x04 \x01(\tR\n" +
+	"collapseId\x1a7\n" +
+	"\tDataEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x1d\n" +
+	"\x1bEnqueueNotificationResponse2\xaa\x02\n" +
 	"\x0eNotifyInternal\x12U\n" +
 	"\x0eRegisterDevice\x12 .notify.v1.RegisterDeviceRequest\x1a!.notify.v1.RegisterDeviceResponse\x12[\n" +
-	"\x10UnregisterDevice\x12\".notify.v1.UnregisterDeviceRequest\x1a#.notify.v1.UnregisterDeviceResponseB9Z7github.com/brojyf/cotab-proto/gen/go/notify/v1;notifyv1b\x06proto3"
+	"\x10UnregisterDevice\x12\".notify.v1.UnregisterDeviceRequest\x1a#.notify.v1.UnregisterDeviceResponse\x12d\n" +
+	"\x13EnqueueNotification\x12%.notify.v1.EnqueueNotificationRequest\x1a&.notify.v1.EnqueueNotificationResponseB9Z7github.com/brojyf/cotab-proto/gen/go/notify/v1;notifyv1b\x06proto3"
 
 var (
 	file_notify_v1_internal_proto_rawDescOnce sync.Once
@@ -242,23 +429,31 @@ func file_notify_v1_internal_proto_rawDescGZIP() []byte {
 	return file_notify_v1_internal_proto_rawDescData
 }
 
-var file_notify_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_notify_v1_internal_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_notify_v1_internal_proto_goTypes = []any{
-	(*RegisterDeviceRequest)(nil),    // 0: notify.v1.RegisterDeviceRequest
-	(*RegisterDeviceResponse)(nil),   // 1: notify.v1.RegisterDeviceResponse
-	(*UnregisterDeviceRequest)(nil),  // 2: notify.v1.UnregisterDeviceRequest
-	(*UnregisterDeviceResponse)(nil), // 3: notify.v1.UnregisterDeviceResponse
+	(*RegisterDeviceRequest)(nil),       // 0: notify.v1.RegisterDeviceRequest
+	(*RegisterDeviceResponse)(nil),      // 1: notify.v1.RegisterDeviceResponse
+	(*UnregisterDeviceRequest)(nil),     // 2: notify.v1.UnregisterDeviceRequest
+	(*UnregisterDeviceResponse)(nil),    // 3: notify.v1.UnregisterDeviceResponse
+	(*EnqueueNotificationRequest)(nil),  // 4: notify.v1.EnqueueNotificationRequest
+	(*PushNotification)(nil),            // 5: notify.v1.PushNotification
+	(*EnqueueNotificationResponse)(nil), // 6: notify.v1.EnqueueNotificationResponse
+	nil,                                 // 7: notify.v1.PushNotification.DataEntry
 }
 var file_notify_v1_internal_proto_depIdxs = []int32{
-	0, // 0: notify.v1.NotifyInternal.RegisterDevice:input_type -> notify.v1.RegisterDeviceRequest
-	2, // 1: notify.v1.NotifyInternal.UnregisterDevice:input_type -> notify.v1.UnregisterDeviceRequest
-	1, // 2: notify.v1.NotifyInternal.RegisterDevice:output_type -> notify.v1.RegisterDeviceResponse
-	3, // 3: notify.v1.NotifyInternal.UnregisterDevice:output_type -> notify.v1.UnregisterDeviceResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	5, // 0: notify.v1.EnqueueNotificationRequest.push:type_name -> notify.v1.PushNotification
+	7, // 1: notify.v1.PushNotification.data:type_name -> notify.v1.PushNotification.DataEntry
+	0, // 2: notify.v1.NotifyInternal.RegisterDevice:input_type -> notify.v1.RegisterDeviceRequest
+	2, // 3: notify.v1.NotifyInternal.UnregisterDevice:input_type -> notify.v1.UnregisterDeviceRequest
+	4, // 4: notify.v1.NotifyInternal.EnqueueNotification:input_type -> notify.v1.EnqueueNotificationRequest
+	1, // 5: notify.v1.NotifyInternal.RegisterDevice:output_type -> notify.v1.RegisterDeviceResponse
+	3, // 6: notify.v1.NotifyInternal.UnregisterDevice:output_type -> notify.v1.UnregisterDeviceResponse
+	6, // 7: notify.v1.NotifyInternal.EnqueueNotification:output_type -> notify.v1.EnqueueNotificationResponse
+	5, // [5:8] is the sub-list for method output_type
+	2, // [2:5] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_notify_v1_internal_proto_init() }
@@ -272,7 +467,7 @@ func file_notify_v1_internal_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_notify_v1_internal_proto_rawDesc), len(file_notify_v1_internal_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
