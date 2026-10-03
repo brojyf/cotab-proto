@@ -4,8 +4,8 @@ package notify.v1;
 
 option go_package = "github.com/brojyf/cotab-proto/gen/go/notify/v1;notifyv1";
 
-// NotifyInternal is how other services manage the delivery targets that
-// notify owns.
+// NotifyInternal is how other services hand notify something to deliver, and
+// how they manage the delivery targets that notify owns.
 //
 // Device tokens live here rather than in the application database because
 // this is the service that knows when one stops working: APNs reports a token
@@ -22,6 +22,12 @@ service NotifyInternal {
   // Releases a device the caller's user owns. Idempotent: unregistering a
   // device that is not there succeeds.
   rpc UnregisterDevice(UnregisterDeviceRequest) returns (UnregisterDeviceResponse);
+
+  // Accepts a push for each of user_ids and returns once it is queued, not
+  // once it is delivered: notify owns the queue behind this call, so callers
+  // never hold its credentials or its message format. Idempotent per
+  // (event_id, user_id): a retry with the same event_id reaches nobody twice.
+  rpc EnqueueNotification(EnqueueNotificationRequest) returns (EnqueueNotificationResponse);
 }
 
 message RegisterDeviceRequest {
@@ -42,3 +48,26 @@ message UnregisterDeviceRequest {
 }
 
 message UnregisterDeviceResponse {}
+
+message EnqueueNotificationRequest {
+  // Chosen once by the caller when the event happens and reused on every
+  // retry. A fresh id per attempt defeats deduplication.
+  string event_id = 1;
+  // Who to reach. Resolving a user to devices is notify's job.
+  repeated string user_ids = 2;
+  PushNotification push = 3;
+}
+
+message PushNotification {
+  // With a title or body the push is shown as an alert. With neither it is a
+  // silent background push, and the app decides what to show from data.
+  string title = 1;
+  string body = 2;
+  // Merged into the provider payload for the app to route on.
+  map<string, string> data = 3;
+  // Lets the provider replace an undelivered earlier push with this one.
+  // Stable per logical update, not per attempt. APNs keeps the first 64 bytes.
+  string collapse_id = 4;
+}
+
+message EnqueueNotificationResponse {}
